@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="./build/css/vendor.css">
+  <link rel="stylesheet" href="./build/css/styles.css">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dustjs-linkedin/2.7.5/dust-full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dustjs-helpers/1.7.3/dust-helpers.min.js"></script>
+  <script type="text/javascript" src="./build/js/vendor.min.js"></script>
+  <script type="text/javascript" src="./build/js/app.js"></script>
+  <title>Traffic Hourly Distribution</title>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1 class="jumbotron">Traffic Hourly distribution</h1>
+    <div class="well">
+      <h5>The current array is: <br>
+        <ul>
+        <div id="currentArray"></div>
+        </ul>
+        (this is just for checking)</h5>
+    </div>
+    <div class="panel panel-info">
+      <div class="panel-heading">Calculator</div>
+      <div class="panel-body">
+        <div class="form-group">
+          <table class="table table-striped" id="trafficTable">
+            <thead>
+              <tr>
+                <th>Hour</th>
+                <th>AADT Rural(%)</th>
+                <th>AADT Rural</th>
+                <th>Manual input</th>
+              </tr>
+            </thead>
+            <tbody>
+              <div id="hours"></div>
+            </tbody>
+          </table>
+        </div>
+        <button type="submit" name="button" id="submitButton" class="btn btn-success">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
