@@ -42,17 +42,29 @@ exports.renderChecking = function(dataArray){
   });
 }
 
+exports.total = function(array) {
+  var totalPercentage = array.reduce(function(sum, value) {
+  return sum + value;
+}, 0);
+  if (totalPercentage > 1) {
+    $(".alert").show();
+  } else {
+    $(".alert").hide();
+  }
+}
+
 },{}],2:[function(require,module,exports){
 var trafficDistDefaults = require('./../js/thd.js').trafficDistDefaults;
 var changeIndividualNum = require('./../js/thd.js').changeIndividualNum;
 var renderChecking = require('./../js/thd.js').renderChecking;
+var total = require('./../js/thd.js').total;
 
 
 $(document).ready(function(){
   var template = '{#.}<tr>'+
                     '<td>{$idx} - {@math key="{$idx}" method="add" operand="1"/}</td>' +
                     '<td>'+
-                      '<input id="traffic_' + '{$idx}" type="text" data-slider-id="trafficSlider_'+'{$idx}" data-slider-min="0" data-slider-max="10" data-slider-step="0.01" data-slider-value={@math key="{.}" method="multiply" operand="100"/} />' +
+                      '<input id="traffic_' + '{$idx}" type="text" data-slider-id="trafficSlider_'+'{$idx}" data-slider-min="0" data-slider-max="15" data-slider-step="0.01" data-slider-value={@math key="{.}" method="multiply" operand="100"/} />' +
                     '</td>' +
                     '<td>' +
                     '<input type="hidden" id="trafficDefault_'+ '{$idx}" value={@math key="{.}" method="multiply" operand="100"/}>' +
@@ -100,20 +112,27 @@ $(document).ready(function(){
   //Set visible input field to default value
   $("#trafficValue_" + i).attr("value", trafficDefault);
 
+
   //Create two way binding between input field and slider
   $("#trafficValue_" + i).on("change", function() {
     currentIndex = (this.id).split("_").pop();
     $("#traffic_" + currentIndex).slider('setValue', this.value, true, true);
     trafficDistDefaults = changeIndividualNum(trafficDistDefaults, currentIndex, this.value/100);
     renderChecking(trafficDistDefaults);
+    total(trafficDistDefaults);
   });
   $("#traffic_" + i).on("slide", function(slideEvt) {
     currentIndex = ((slideEvt.currentTarget.id).split("_").pop());
     $("#trafficValue_" + currentIndex).attr("value", slideEvt.value);
     trafficDistDefaults = changeIndividualNum(trafficDistDefaults, currentIndex, this.value/100);
     renderChecking(trafficDistDefaults);
+    total(trafficDistDefaults);
   });
 }
+
+
+
+
 })
 
 exports.trafficDistDefaults = [0.01269013,
@@ -157,6 +176,17 @@ exports.renderChecking = function(dataArray){
   dust.render("checkingTemplate", dataArray, function(err, out) {
     $("#currentArray").html(out);
   });
+}
+
+exports.total = function(array) {
+  var totalPercentage = array.reduce(function(sum, value) {
+  return sum + value;
+}, 0);
+  if (totalPercentage > 1) {
+    $(".alert").show();
+  } else {
+    $(".alert").hide();
+  }
 }
 
 },{"./../js/thd.js":1}]},{},[2]);

@@ -3,13 +3,13 @@
 
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="./build/css/vendor.css">
-  <link rel="stylesheet" href="./build/css/styles.css">
+  <link rel="stylesheet" href="build/css/vendor.css">
+  <link rel="stylesheet" href="build/css/styles.css">
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/dustjs-linkedin/2.7.5/dust-full.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/dustjs-helpers/1.7.3/dust-helpers.min.js"></script>
-  <script type="text/javascript" src="./build/js/vendor.min.js"></script>
-  <script type="text/javascript" src="./build/js/app.js"></script>
+  <script type="text/javascript" src="build/js/vendor.min.js"></script>
+  <script type="text/javascript" src="build/js/app.js"></script>
   <title>Traffic Hourly Distribution</title>
 </head>
 
@@ -24,6 +24,9 @@
         </ul>
         (this is just for checking)</h5>
     </div>
+    <div class="alert alert-danger">
+   <strong>Out of range!</strong> The current total percentage is more than 100%.
+   </div>
     <div class="panel panel-info">
       <div class="panel-heading">Calculator</div>
       <div class="panel-body">
